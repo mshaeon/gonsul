@@ -29,12 +29,7 @@ func (e *exporter) Start() map[string]string {
 	var localData = map[string]string{}
 
 	// Should we clone the repo, or is it already done via 3rd party
-	if e.config.IsCloning() {
-		e.logger.PrintInfo("EXPORTER: Git cloning from configured remote repository")
-		e.downloadRepo()
-	} else {
-		e.logger.PrintInfo("EXPORTER: Skipping Git clone, using local path: " + e.config.GetRepoRootDir())
-	}
+	e.logger.PrintInfo("EXPORTER: Skipping Git clone, using local path: " + e.config.GetRepoRootDir())
 
 	// Set the path where Gonsul should start traversing files to add to Consul
 	repoDir := path.Join(e.config.GetRepoRootDir(), e.config.GetRepoBasePath())

@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
+
 	"github.com/namsral/flag"
 )
 
@@ -47,7 +48,6 @@ type config struct {
 // IConfig is our config interface, implemented by our config struct above. It allows
 // us to pass along an interface so we can mock and test any function that receives it
 type IConfig interface {
-	IsCloning() bool
 	GetLogLevel() int
 	GetStrategy() string
 	GetRepoURL() string
